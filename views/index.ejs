@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="iwdth=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="conatiner"
+        style="width: 100%; height: 500px;  margin-top: 8%; display: flex; justify-content: center; align-items: center;">
+        <div class="box1" style="width: 50%; height: 400px;  margin: 20px;  ">
+       
+            <% if (updateData) { %>
+
+                <form action="/rupdate/<%= myid %>" method="POST">
+                    <label for="">name</label>
+                    <input type="text" name="name" id="name" value="<%= updateData.name %>">
+                    <br><br>
+                    <label for="">Email</label>
+                    <input type="email" name="email" id="email" value="<%= updateData.email %>">
+                    <br>
+                    <br>
+                    <label for="">class</label>
+                    <input type="text" name="cls" id="cls" value="<%= updateData.cls %>">
+                    <br><br>
+            
+                    <label for="">phoneno</label>
+                    <input type="number" name="phoneno" id="phoneno" value="<%= updateData.phoneno %>">
+                    <br><br>
+                    <label for="">Password</label>
+                    <input type="number" id="password" name="password" value="<%= updateData.password %>">
+                    <br><br>
+                    <button type="submit">Update</button>
+                </form>
+
+             
+
+
+
+
+
+
+                 <% } else { %>
+                    <h1 style="text-align: center;  font-family: 'Source Sans Pro', sans-serif;">Add User Data</h1>
+                    <form action="/add" method="POST">
+                        <div class="box1" style="width: 70%; height: 40px; ">
+                            <label for="name" style="font-size: 1.5em;">Name : </label>
+                            <input type="text" name="name" id="name"
+                                style="width: 80%; height: 100%; text-decoration: none; border: none; font-size: 1.3em; text-align: center;">
+                        </div>
+
+                        <div class="box2" style="width: 70%; height: 40px; margin-top: 10px;">
+                            <label for="email" style="font-size: 1.5em;">E-mail : </label>
+                            <input type="email" name="email" id="email"
+                                style="width: 70%; height: 100%; text-decoration: none; border: none; font-size: 1.3em; text-align: center;">
+                        </div>
+
+                        <div class="box1" style="width: 70%; height: 40px; margin-top: 10px;">
+
+                            <label for="" style="font-size: 1.5em;">Class : </label>
+                            <input type="text" name="cls" id="cls"
+                                style="width: 80%; height: 100%; text-decoration: none; border: none; font-size: 1.3em; text-align: center;">
+                        </div>
+
+                        <div class="box1" style="width: 70%; height: 40px; margin-top: 10px;">
+                            <label for="number" style="font-size: 1.5em;">Phone Number : </label>
+                            <input type="number" id="phoneno" name="phoneno"
+                                style="width: 50%; height: 100%; text-decoration: none; border: none; font-size: 1.3em; text-align: center;">
+                        </div>
+
+                        <div class="box1" style="width: 70%; height: 40px; margin-top: 10px;">
+                            <label for="password" style="font-size: 1.5em;">Password : </label>
+                            <input type="password" id="password" name="password"
+                                style="width: 60%; height: 100%; text-decoration: none; border: none; font-size: 1.3em; text-align: center;">
+                        </div>
+                        <div class="box1" style="width: 15%; height: 30px; margin-top: 10px;">
+                            <button type="submit"
+                                style="width: 100%; height: 100%; background-color: yellow; color: rgb(9, 12, 14);">Submit</button>
+                        </div>
+
+                    </form>
+                    <% } %>
+                    
+
+        </div>
+        <div class="box2" style="width: 70%; height: 400px; margin: 20px;">
+            <h1 style="text-align: center;  font-family: 'Source Sans Pro', sans-serif;">Stuent Information is here</h1>
+
+            <table border="2" Cellpadding="10" Cellspacing="10" bordercolor="red" bgcolor="white" rules="all"
+                width="30%" height="15%">
+                <tr style="background-color: rgba(0, 255, 255, 0.299);">
+                    <td style="   font-family: 'Source Sans Pro', sans-serif;">
+                        <h4>Name</h4>
+                    </td>
+                    <td style="   font-family: 'Source Sans Pro', sans-serif;">
+                        <h4>E-mail</h4>
+                    </td>
+                    <td style="   font-family: 'Source Sans Pro', sans-serif;">
+                        <h4>Class</h4>
+                    </td>
+                    <td style="   font-family: 'Source Sans Pro', sans-serif;">
+                        <h4>Phone Number</h4>
+                    </td>
+                    <td style="   font-family: 'Source Sans Pro', sans-serif;">
+                        <h4>Password</h4>
+                    </td>
+                    <td style="   font-family: 'Source Sans Pro', sans-serif;">
+                        <h4>Action</h4>
+                    </td>
+                </tr>
+
+
+                <% data.forEach(item=>{ %>
+
+                    <tr>
+                        <td style="   font-family: 'Source Sans Pro', sans-serif;">
+                            <%= item.name %>
+                        </td>
+                        <td style="   font-family: 'Source Sans Pro', sans-serif;">
+                            <%= item.email %>
+                        </td>
+                        <td style="   font-family: 'Source Sans Pro', sans-serif;">
+                            <%= item.cls %>
+                        </td>
+                        <td style="   font-family: 'Source Sans Pro', sans-serif;">
+                            <%= item.phoneno %>
+                        </td>
+                        <td style="   font-family: 'Source Sans Pro', sans-serif;">
+                            <%= item.password %>
+                        </td>
+                        <td>
+                            <ul>
+                                <button
+                                    style="width:100%; height: 100%; background-color: rgba(8, 225, 8, 0.744); color: aliceblue;">
+                                    <a href="/update/<%= item.id %>">Edit </a>
+                                </button>
+                            </ul>
+                            <ul>
+                                <form action="/delete/<%= item.id %>" method="get" style="display: inline;">
+                                    <button type="submit"
+                                        style="width:100%; height: 100%; background-color: red; color: aliceblue; ">Delete</button>
+                                </form>
+                            </ul>
+                        </td>
+                    </tr>
+
+                    <% }); %>
+
+            </table>
+
+
+        </div>
+      
+
+    </div>
+
+
+</body>
+
+</html>
